@@ -12,7 +12,6 @@ public class Player extends Entity {
 	}
 	@Override
 	public void Update() {
-		// TODO Auto-generated method stub
 		super.Update();
 		if(right)x++;
 		if(left)x--;

@@ -39,7 +39,6 @@ public class Main extends Canvas implements Runnable, KeyListener {
 	
 	public static List<Entity> entities = new ArrayList<Entity>();
 	Player player = new Player(10,10);
-	// *******//
 
 	public Main() {
 		this.addKeyListener(this);
@@ -132,15 +131,12 @@ public class Main extends Canvas implements Runnable, KeyListener {
 		stop();
 	}
 	
-	@Override
 	public void keyTyped(KeyEvent e) {
 	}
-	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) player.right = true;
 		if(e.getKeyCode() == KeyEvent.VK_LEFT) player.left = true;
 	}
-	@Override
 	public void keyReleased(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) player.right = false;
 		if(e.getKeyCode() == KeyEvent.VK_LEFT) player.left = false;

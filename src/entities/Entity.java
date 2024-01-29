@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import components.Component;
-import components.Rigdbody;
 import main.Main;
 
 public class Entity {
