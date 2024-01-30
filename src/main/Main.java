@@ -27,9 +27,9 @@ public class Main extends Canvas implements Runnable, KeyListener {
 	private Thread thread;
 	private boolean isRunning = true;
 	
-	public final static int WIDTH = 4 * 16;
-	public final static int HEIGHT = 4 * 8;
-	public final static int SCALE = 3;
+	public final static int WIDTH = 512 * 16;
+	public final static int HEIGHT = 512 * 8;
+	public final static int SCALE = 1;
 
 	private BufferedImage image;
 
