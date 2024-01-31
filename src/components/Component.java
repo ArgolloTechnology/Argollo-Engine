@@ -1,5 +1,7 @@
 package components;
 
+import java.awt.Graphics;
+
 import entities.Entity;
 
 public class Component {
@@ -9,5 +11,9 @@ public class Component {
 		owner.components.add(this);
 	}
 	public void Update() {
+		
+	}
+	public void Render(Graphics g) {
+		
 	}
 }

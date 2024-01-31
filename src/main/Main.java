@@ -16,6 +16,7 @@ import java.util.Random;
 import javax.swing.JFrame;
 
 import entities.Entity;
+import entities.EntityTest;
 import entities.Player;
 
 
@@ -27,18 +28,19 @@ public class Main extends Canvas implements Runnable, KeyListener {
 	private Thread thread;
 	private boolean isRunning = true;
 	
-	public final static int WIDTH = 512 * 16;
-	public final static int HEIGHT = 512 * 8;
+	public final static int WIDTH = 100 * 16;
+	public final static int HEIGHT = 100 * 8;
 	public final static int SCALE = 1;
 
 	private BufferedImage image;
 
 	public static Random rand;
 	public static String mode = "MENU";
-	public static boolean FULL_SCREEN = true;
+	public static boolean FULL_SCREEN = false;
 	
 	public static List<Entity> entities = new ArrayList<Entity>();
-	Player player = new Player(10,10);
+	//EntityTest e = new EntityTest(10,1);
+	Player player;
 
 	public Main() {
 		this.addKeyListener(this);
@@ -46,6 +48,8 @@ public class Main extends Canvas implements Runnable, KeyListener {
 		if(FULL_SCREEN)setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
 		else setPreferredSize(new Dimension(WIDTH*SCALE,HEIGHT*SCALE));
 		intframe();
+		player = new Player(10,400);
+		
 	}
 
 	public void intframe() {
@@ -99,8 +103,8 @@ public class Main extends Canvas implements Runnable, KeyListener {
 			entity.Render(g);
 		}
 		g = bs.getDrawGraphics();
-		g.drawImage(image, 0, 0, Toolkit.getDefaultToolkit().getScreenSize().width,
-				Toolkit.getDefaultToolkit().getScreenSize().height, null);
+		g.drawImage(image, 0, 0, WIDTH*SCALE,
+				HEIGHT*SCALE, null);
 		bs.show();
 	}
 
@@ -136,9 +140,13 @@ public class Main extends Canvas implements Runnable, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) player.right = true;
 		if(e.getKeyCode() == KeyEvent.VK_LEFT) player.left = true;
+		if(e.getKeyCode() == KeyEvent.VK_UP) player.up = true;
+		if(e.getKeyCode() == KeyEvent.VK_DOWN) player.down = true;
 	}
 	public void keyReleased(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) player.right = false;
 		if(e.getKeyCode() == KeyEvent.VK_LEFT) player.left = false;
+		if(e.getKeyCode() == KeyEvent.VK_UP) player.up = false;
+		if(e.getKeyCode() == KeyEvent.VK_DOWN) player.down = false;
 	}
 }
