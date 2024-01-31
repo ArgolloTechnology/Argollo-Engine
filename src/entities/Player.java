@@ -1,7 +1,11 @@
 package entities;
 
+import java.awt.Graphics;
+
+import components.AnimationController;
 import components.Collider;
 import components.Rigdbody;
+import graphics.Animation;
 import graphics.Sprite;
 
 public class Player extends Entity {
@@ -10,13 +14,18 @@ public class Player extends Entity {
 	public float speed = 40f;
 	Rigdbody rb;
 	Collider collider;
+	Animation anim;
+	AnimationController animator;
+	Sprite idlesheet;
 	public Player(float x, float y) {
 		super(x, y);
-		rb = new Rigdbody(this,.1f);
-		rb.addForce(0f, -5);
-		rb.velocity.x = 10;
+		idlesheet = new Sprite("/Character Idle 48x48.png", true, 1);
+		rb = new Rigdbody(this,.0f);
 		collider = new Collider(this, (int)(16), (int)(16));
-		//sprite = new Sprite("/Logo_1.png",.01f);
+		idlesheet.getSprites(10, 48, 48);
+		anim = new Animation(idlesheet.sprites, 12);
+		animator = new AnimationController(this);
+		animator.Play(anim);
 	}
 	@Override
 	public void Update() {
@@ -25,5 +34,10 @@ public class Player extends Entity {
 		if(down)y+=speed;
 		if(up)y-=speed;
 		super.Update();
+	}
+	@Override
+	public void Render(Graphics g) {
+		// TODO Auto-generated method stub
+		super.Render(g);
 	}
 }

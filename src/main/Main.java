@@ -16,7 +16,6 @@ import java.util.Random;
 import javax.swing.JFrame;
 
 import entities.Entity;
-import entities.EntityTest;
 import entities.Player;
 
 
@@ -106,6 +105,7 @@ public class Main extends Canvas implements Runnable, KeyListener {
 		g.drawImage(image, 0, 0, WIDTH*SCALE,
 				HEIGHT*SCALE, null);
 		bs.show();
+		g.dispose();
 	}
 
 	public void run() {

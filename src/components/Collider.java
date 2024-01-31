@@ -12,7 +12,7 @@ public class Collider extends Component {
     public int width;
     public int height;
     
-    boolean Debug = true;
+    boolean Debug = false;
 
     public Collider(Entity e, int width, int height) {
         super(e);

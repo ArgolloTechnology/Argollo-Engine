@@ -43,8 +43,6 @@ public class Rigdbody extends Component {
 		if(aceleracion.y < gravityScale+0.1 || aceleracion.y > gravityScale-0.1) aceleracion.y = gravityScale;
 		if(aceleracion.y < gravityScale)aceleracion.y += .1f;
 		else if(aceleracion.y > gravityScale)aceleracion.y -= .1f;
-		System.out.println(aceleracion.y);
-		System.out.println(owner.y);
 	}
 	
 	public void addForce(float x, float y) {

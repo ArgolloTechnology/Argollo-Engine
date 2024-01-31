@@ -2,18 +2,17 @@ package entities;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-import components.Collider;
 import components.Component;
-import graphics.Sprite;
 import main.Main;
 
 public class Entity {
 	public float x, y;
 	public List<Component> components = new ArrayList<>();
-	Sprite sprite;
+	public BufferedImage sprite;
 	public Entity(float x, float y) {
 		this.x = x;
 		this.y = y;
@@ -28,7 +27,7 @@ public class Entity {
 	}
 	public void Render(Graphics g){
 		g.setColor(Color.white);
-		if(sprite != null)g.drawImage(sprite.getSprite(), (int)x, (int)y,(int)(sprite.size.x*sprite.scale),(int)(sprite.size.y*sprite.scale), null);
+		if(sprite != null)g.drawImage(sprite, (int)x, (int)y,(int)(sprite.getWidth()),(int)(sprite.getHeight()), null);
 		else g.fillRect((int)x, (int)y, 16, 16);
 		if (components != null) {
 			for (var c : components) {
