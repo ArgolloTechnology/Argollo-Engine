@@ -16,7 +16,9 @@ import java.util.Random;
 import javax.swing.JFrame;
 
 import entities.Entity;
+import entities.EntityTest;
 import entities.Player;
+import world.World;
 
 
 public class Main extends Canvas implements Runnable, KeyListener {
@@ -27,8 +29,8 @@ public class Main extends Canvas implements Runnable, KeyListener {
 	private Thread thread;
 	private boolean isRunning = true;
 	
-	public final static int WIDTH = 100 * 16;
-	public final static int HEIGHT = 100 * 8;
+	public final static int WIDTH = World.TILE_SIZE * 16;
+	public final static int HEIGHT = World.TILE_SIZE * 16;
 	public final static int SCALE = 1;
 
 	private BufferedImage image;
@@ -39,7 +41,9 @@ public class Main extends Canvas implements Runnable, KeyListener {
 	
 	public static List<Entity> entities = new ArrayList<Entity>();
 	//EntityTest e = new EntityTest(10,1);
-	Player player;
+	public static Player player;
+	
+	World map;
 
 	public Main() {
 		this.addKeyListener(this);
@@ -47,7 +51,8 @@ public class Main extends Canvas implements Runnable, KeyListener {
 		if(FULL_SCREEN)setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize()));
 		else setPreferredSize(new Dimension(WIDTH*SCALE,HEIGHT*SCALE));
 		intframe();
-		player = new Player(10,400);
+		player = new Player(0,0);
+		map = new World("/demo map.png");
 		
 	}
 
@@ -98,6 +103,7 @@ public class Main extends Canvas implements Runnable, KeyListener {
 		Graphics g = image.getGraphics();
 		g.setColor(new Color(0xff5e5e5e));
 		g.fillRect(0, 0, WIDTH, HEIGHT);
+		map.render(g);
 		for (var entity : entities) {
 			entity.Render(g);
 		}

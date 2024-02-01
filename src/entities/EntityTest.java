@@ -8,7 +8,7 @@ public class EntityTest extends Entity{
 	public EntityTest(float x, float y) {
 		super(x, y);
 		// TODO Auto-generated constructor stub
-		c=new Collider(this, 16, 16);
+		c=new Collider(this, 16, 16,0,0);
 	}
 
 }
